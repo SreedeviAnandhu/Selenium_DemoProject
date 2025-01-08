@@ -3,6 +3,7 @@ package TestScript;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import Pages.LoginPage;
 import Pages.ManageNewsPage;
 
 public class ManageNewsTest extends Base{
@@ -14,10 +15,12 @@ public class ManageNewsTest extends Base{
 		String password = "admin";
 		String news = "hello sree";
 		
+		LoginPage loginpage =new LoginPage(driver);
+		loginpage.enterUserName(username);
+		loginpage.enterpassword(password);
+		loginpage.submitclick();
+		
 		ManageNewsPage managenews = new ManageNewsPage(driver);
-		managenews.enterUserName(username);
-		managenews.enterPassword(password);
-		managenews.submitClick();
 		managenews.manageNewsClick();
 		managenews.newClick();
 		managenews.enterNews(news);

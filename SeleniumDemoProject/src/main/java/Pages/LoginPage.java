@@ -1,9 +1,16 @@
-package Pages;
+  package Pages;
+
+import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import utilities.PageUtility;
+import utilities.WaitUtility;
 
 
 public class LoginPage {
@@ -37,7 +44,13 @@ public class LoginPage {
 	
 	public void submitclick()
 	{
-		submit.click();
+	//	submit.click();
+	//	WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(20));
+	//  wait.until(ExpectedConditions.elementToBeClickable(submit));
+		WaitUtility wait = new WaitUtility();
+		wait.waitForElementToBeClickable(driver, submit );
+		PageUtility page = new PageUtility();
+		page.javaSriptClick(driver, submit);
 	}
 	 
 	public boolean isDashBoardDisplayed()
@@ -47,6 +60,9 @@ public class LoginPage {
 	
 	public boolean isAlertDisplayed()
 	{
-		return alert.isDisplayed();
+	//	WaitUtility wait = new WaitUtility();
+	//	wait.waitForAlertToBeVisible(driver);
+		Boolean value = alert.isDisplayed();
+		return value;
 	}
 }

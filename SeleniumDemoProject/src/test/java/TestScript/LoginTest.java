@@ -2,22 +2,29 @@ package TestScript;
 
 import static org.testng.Assert.assertTrue;
 
+import java.io.IOException;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import Pages.LoginPage;
+import utilities.ExcelUtilities;
 
 
 public class LoginTest extends Base{
 	
 	@Test
-	public void verifyTheUserIsAbleToLoginUsingValidCredentials()
+	public void verifyTheUserIsAbleToLoginUsingValidCredentials() throws IOException
 	{
 	
-	String username= "admin";
-	String password= "admin";
+   //	String username= "admin";
+   //	String password= "admin";
+		
+	String username = ExcelUtilities.readStringData(1, 0, "LoginPage");
+	String password = ExcelUtilities.readStringData(1, 1, "LoginPage");
+		
 	
-	LoginPage loginpage =new LoginPage(driver);
+	LoginPage loginpage =new LoginPage(driver); 
 	loginpage.enterUserName(username);
 	loginpage.enterpassword(password);
 	loginpage.submitclick();
@@ -28,7 +35,7 @@ public class LoginTest extends Base{
     }
 	
 	@Test
-	public void loginTestWithIncorrectPassword()
+	public void verifyTheUserIsAbleToLoginWithIncorrectPassword() 
 	{
 		String username = "admin";
 		String password = "sree";
@@ -43,7 +50,7 @@ public class LoginTest extends Base{
 		
 	}
 	@Test
-	public void loginTestWithIncorrectUsername() 
+	public void verifyTheUserIsAbleToLoginIncorrectUsername() 
 	{
 		String username = "anupama";
 		String password ="admin";
@@ -58,7 +65,7 @@ public class LoginTest extends Base{
 		
 	}
 	@Test
-	public void loginTestWithIncorrectUsernameAndPassword()
+	public void verifyTheUserIsAbleToLoginWithIncorrectUsernameAndPassword()
 	{
 		String username ="anusree";
 		String password ="sreedevi";

@@ -17,31 +17,12 @@ public class ManageNewsPage {
 	
 	//@FindBy(xpath="//input[@type='text']")private WebElement webelementname;
 	
-	@FindBy(name="username")private WebElement name;
-	@FindBy(name="password")private WebElement pass;
-	@FindBy(xpath="//button[@type='submit']")private WebElement submit;
-	
 	@FindBy(xpath="//p[text()='Manage News']")private WebElement managenewsclick;
 	@FindBy(xpath="//a[@class='btn btn-rounded btn-danger']")private WebElement newclick;
 	@FindBy(xpath="//textarea[@placeholder='Enter the news']")private WebElement enternews;
 	@FindBy(xpath="//button[@class='btn btn-danger']")private WebElement saveclick;
 	@FindBy(xpath="//i[@class='icon fas fa-check']")private WebElement isalertdisplayed;
 	
-	
-	public void enterUserName(String usernamevalue)
-	{
-		name.sendKeys(usernamevalue);
-	}
-	
-	public void enterPassword(String passwordvalue)
-	{
-		pass.sendKeys(passwordvalue);
-	}
-	
-	public void submitClick()
-	{
-		submit.click();
-	}
 	
 	public void manageNewsClick()
 	{
@@ -65,7 +46,8 @@ public class ManageNewsPage {
 	
 	public boolean isAlertDisplayed()
 	{
-		return isalertdisplayed.isDisplayed();
+		Boolean value = isalertdisplayed.isDisplayed();
+		return value;
 	}
 
 }
